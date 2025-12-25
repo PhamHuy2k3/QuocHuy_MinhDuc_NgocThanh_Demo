@@ -5,11 +5,54 @@
   border: 3px solid #e53935;
   border-radius: 14px;
   padding: 16px;
-  width: 320px;
+  max-width: 320px;
+  width: 100%;
   background: #ffffff;
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   transition: transform .18s ease, box-shadow .18s ease;
+}
+
+/* Grid container for multiple cards (3-per-row) */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: start;
+  margin: 12px 0;
+}
+
+/* When placed in the grid make cards vertical and centered */
+.cards-grid .card {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 18px;
+}
+
+.cards-grid .Images {
+  width: 100%;
+  height: 140px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.cards-grid .Number {
+  margin-bottom: 6px;
+  display: inline-block;
+  padding-bottom: 4px;
+  border-bottom: 3px solid #e53935;
+}
+
+.cards-grid .Name {
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.cards-grid .Misson {
+  margin-top: 8px;
+  color: #666;
+  -webkit-line-clamp: 2;
 }
 
 .Images {
@@ -79,8 +122,16 @@
 .Misson.mission-lines span:nth-child(3) { width: 55%; margin-bottom: 0; }
 
 
+@media (max-width: 900px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .card { max-width: none; }
+  .cards-grid .Images { height: 180px; }
+}
 @media (max-width: 360px) {
-  .member-card { width: 100%; padding: 12px; }
+  .card { width: 100%; padding: 12px; }
   .Images { width: 64px; height: 64px; }
   .Name { font-size: 1rem; }
 }
